@@ -41,6 +41,11 @@ class LoginController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
+     * @var string
+     */
+    private $signedUrl;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -48,6 +53,19 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+        $this->signedUrl = URL::temporarySignedRoute('auth.webex', now()->addMinutes(10), [
+            'id' => session()->getId()
+        ]);
+    }
+
+    /**
+     * Show the application's login form.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function showLoginForm()
+    {
+        return view('auth.login', ['link' => $this->signedUrl]);
     }
 
     /**
@@ -70,27 +88,32 @@ class LoginController extends Controller
             $this->sendLockoutResponse($request);
         }
 
-        $signed_url = URL::temporarySignedRoute('auth.webex', now()->addMinutes(10), [
-            'id' => $request->session()->getId()
-        ]);
+        $msg = 'The login link is invalid, expired or already been used.';
+        $isSignedUrl = $request->has('signature');
+        $isValidSignedUrl = $request->hasValidSignature();
 
-        if (!$request->hasValidSignature()) {
-            $msg = 'The login link is invalid, expired or already been used.';
-            //TODO: Check if already in use.
-
-            return $request->missing(['signature', 'expires', 'id']) ?
-                view('auth.login', ['link' => $signed_url]) :
-                view('auth.login', ['link' => $signed_url])
-                    ->withErrors(['link' => $msg]);
-        } else {
-            abort_if($request->missing(['signature', 'expires', 'id']), 401);
-            $request->session()->setId($request->get('id'));
-
-            // by default, all Webex integrations have the spark:kms scope
-            return Socialite::driver('webex')
-                ->setScopes(['spark:all', 'spark:kms'])
-                ->redirect();
+        // TODO: Refactor this.
+        if ($isSignedUrl && !$isValidSignedUrl) {
+            return view('auth.login', ['link' => $this->signedUrl])->withErrors(['link' => $msg]);
         }
+
+        if ($isValidSignedUrl) {
+            abort_if($request->missing(['signature', 'expires', 'id']), 401);
+
+            $request->session()->setId($request->get('id'));
+            $device = Device::find($request->get('id'));
+
+            if($device) {
+                return view('auth.login', ['link' => $this->signedUrl])->withErrors(['link' => $msg]);
+            }
+
+            $request->session()->put('isQrFlow', true);
+        }
+
+        // by default, all Webex integrations have the spark:kms scope
+        return Socialite::driver('webex')
+            ->setScopes(['spark:people_read', 'spark:kms'])
+            ->redirect();
     }
 
     /**
@@ -146,6 +169,16 @@ class LoginController extends Controller
         // to login and redirect the user back to the login form. Of course, when this
         // user surpasses their maximum number of attempts they will get locked out.
         $this->incrementLoginAttempts($request);
+
+        if ($request->session()->get('isQrFlow')) {
+            $request->session()->regenerate();
+            $this->clearLoginAttempts($request);
+            $this->logout($request);
+
+            return $request->wantsJson()
+                ? new JsonResponse([], 204)
+                : redirect('/login')->with( ['status' => 'success'] );
+        }
 
         return $this->sendLoginResponse($request);
     }
@@ -204,12 +237,15 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        abort_if(!$request->hasValidSignature(), 401);
-        abort_if($request->missing(['signature', 'expires', 'id']), 401);
+        $isSignedUrl = $request->has('signature');
+        $isValidSignedUrl = $request->hasValidSignature();
+
+        abort_if($isSignedUrl && !$isValidSignedUrl, 401);
+        abort_if($isSignedUrl && $request->missing(['signature', 'expires', 'id']), 401);
 
         $device = Device::find($request->get('id'));
 
-        if ($device) {
+        if ($isSignedUrl && $isValidSignedUrl && $device) {
             $device->authorized_at = now();
             $device->save();
 

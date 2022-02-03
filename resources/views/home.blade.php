@@ -11,9 +11,14 @@
 @endsection
 
 @section('content')
-    <div class="container-fluid">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
+
+                <div class="alert alert-success text-justify lead" role="alert">
+                    {{ __('You are logged in!') }}
+                </div>
+
                 <div class="card">
                     <div class="card-header">{{ __('Dashboard') }}</div>
 
@@ -23,10 +28,6 @@
                                 {{ session('status') }}
                             </div>
                         @endif
-
-                        <div class="alert alert-success" role="alert">
-                            {{ __('You are logged in!') }}
-                        </div>
 
                         <div class="form-group row">
                             <label for="access_token"
