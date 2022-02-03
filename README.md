@@ -35,7 +35,7 @@ When someone visits the login page, a unique Temporary Signed URL is generated f
 encoded as a QR code on the client side. The user scans this code on their personal device like 
 a phone and begins the traditional Webex Login flow on there.
 
-Meanwhile, the page with the QR code also polls the server at regular intervals to see if the 
+Meanwhile, the client with the QR code also polls the server at regular intervals to see if the 
 user has successfully logged in. The server will only respond when the login flow on the user's 
 device is successful.
 
