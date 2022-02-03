@@ -39,7 +39,7 @@ Meanwhile, the page with the QR code also polls the server at regular intervals 
 user has successfully logged in. The server will only respond when the login flow on the user's 
 device is successful.
 
-Note that the server has validation checks to ensure that Signed URLs are not fake, and can be 
+The application has validation checks to ensure that Signed URLs are not fake, and can be 
 used only once.
 
 ## Setup
