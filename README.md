@@ -61,8 +61,7 @@ Then open and new terminal window and follow the instructions below.
 
 3. Review and follow the [Registering your Integration
    on Webex](https://developer.webex.com/docs/integrations#registering-your-integration) guide.
-    - Your registration must have (at-least) the following [Webex REST API scopes]
-      (https://developer.webex.com/docs/integrations#scopes):
+    - Your registration must have (at-least) the following [Webex REST API scopes](https://developer.webex.com/docs/integrations#scopes):
       | Scope                   | Description                                   |
       |-------------------------|-----------------------------------------------|
       | spark-admin:people_read | Access to read your user's company directory  |
