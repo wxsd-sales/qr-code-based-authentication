@@ -12,7 +12,7 @@ Developers who want a seamless way to sign-in their users with Webex on devices 
 web or input capability — Smart TVs, In-Car Displays or Apps running on RoomOS devices (in kiosk mode).
 
 <p align="center">
-    <img src=""
+    <img src="https://user-images.githubusercontent.com/6129517/152389389-8459b694-5063-4bfd-b113-4bf032c7b637.gif"
          alt="qr-code-based-authentication-demo"/>
 </p>
 
