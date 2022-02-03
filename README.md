@@ -8,8 +8,8 @@ similar to using [OAuth 2.0 Device Authorization Grant](https://oauth.net/2/devi
 [RFC8628](tools.ietf.org/html/rfc8628).
 
 The target audience for this PoC are [Webex Integration](https://developer.webex.com/docs/integrations) 
-Developers who want a seamless way to sign-in their users with Webex on devices with limited or 
-web or input capability — Smart TVs, In-Car Displays or Apps running on RoomOS devices (in kiosk mode).
+Developers who want a seamless way to sign-in their users with Webex on devices with limited web or 
+input capability — Smart TVs, In-Car Displays or Apps running on RoomOS devices (in kiosk mode).
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/6129517/152389389-8459b694-5063-4bfd-b113-4bf032c7b637.gif"
