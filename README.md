@@ -107,7 +107,7 @@ Then open and new terminal window and follow the instructions below.
    ./vendor/bin/sail npm run dev
    ```
 
-Lastly, navigate to `http://localhost` in your browser.
+Lastly, navigate to `http://<YOUR_LOCAL_IP_ADDRESS>/login` in your browser.
 
 
 ## Demo
