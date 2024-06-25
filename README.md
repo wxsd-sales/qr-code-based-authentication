@@ -3,24 +3,27 @@ QR Code based Authentication
 **Seamlessly authenticate with Webex on systems with limited web or input capability.**
 
 This proof-of-concept application lets a registered user authenticate with Webex by scanning a Quick Response (QR) Code on their personal device, such as smartphone. In doing so, it essentially emulates an end user experience similar to using [OAuth 2.0 Device Authorization Grant](https://oauth.net/2/device-flow/), [RFC8628](https://tools.ietf.org/html/rfc8628). For example:
-> Your organization deploys Smart TVs in conference rooms that run a Webex integration. Using this PoC, users can easily authenticate with Webex by scanning a QR Code displayed on the TV screen with their smartphone and and following the login prompt there. This eliminates the need for cumbersome text input on the TV, providing a smooth and efficient authentication process.
+> Your organization deploys Smart TVs in conference rooms that run a Webex integration. Using this PoC, users can easily authenticate with Webex by scanning a QR Code displayed on the TV screen with their smartphone and and following the login prompt. This eliminates the need for cumbersome text input on the TV, providing a smooth and efficient authentication process.
 
 The target audience for this PoC are [Webex Integration](https://developer.webex.com/docs/integrations) Developers who want a seamless way to sign-in their users with Webex on devices with limited web or input capability — Smart TVs, in-car displays, or apps running on RoomOS devices (in kiosk mode).
 
 
 <p align="center">
-    <img src="https://user-images.githubusercontent.com/6129517/152443487-9bce59e6-1704-4d3d-82f5-15c65592afc4.gif"
-         alt="qr-code-based-authentication-demo"/>
+    <a href="https://app.vidcast.io/share/432b5b0a-48dd-4197-9aa7-cf6e60f17003" target="_blank">
+        <img src="https://user-images.githubusercontent.com/6129517/152443487-9bce59e6-1704-4d3d-82f5-15c65592afc4.gif" alt="qr-code-based-authentication-demo"/>
+    </a>
 </p>
 
 <!-- ⛔️ MD-MAGIC-EXAMPLE:START (TOC:collapse=true&collapseText=Click to expand) -->
 <details>
 <summary>Table of Contents (click to expand)</summary>
 
-* [Overview](#overview)
-* [Setup](#setup)
-* [Demo](#demo)
-* [Support](#support)
+  * [Overview](#overview)
+  * [Setup](#setup)
+  * [Demo](#demo)
+  * [Disclaimer](#disclaimer)
+  * [License](#license)
+  * [Support](#support)
 
 </details>
 <!-- ⛔️ MD-MAGIC-EXAMPLE:END -->
@@ -108,8 +111,17 @@ Lastly, navigate to `http://<YOUR_LOCAL_IP_ADDRESS>/login` in your browser.
 
 ## Demo
 
-TODO
+A video where I demo this PoC is available on Vidcast — [https://app.vidcast.io/share/1f414f78-0faa-41ee-8ca3-94d03e9da9b3](https://app.vidcast.io/share/1f414f78-0faa-41ee-8ca3-94d03e9da9b3).
 
+## Disclaimer
+
+Everything included in this repository is for demo and Proof of Concept (PoC) purposes only. Use of the PoC is solely
+at your own risk. This project may contain links to external content, which we do not warrant, endorse, or assume
+liability for. This project is for Cisco Webex use-case, but is not official Cisco Webex branded project.
+
+## License
+
+[MIT](./LICENSE)
 
 ## Support
 
