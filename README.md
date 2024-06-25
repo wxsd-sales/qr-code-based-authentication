@@ -2,14 +2,11 @@ QR Code based Authentication
 ============================
 **Seamlessly authenticate with Webex on systems with limited web or input capability.**
 
-This proof-of-concept application lets a registered user authenticate with Webex by scanning a 
-Quick Response (QR) Code. In doing so, it basically tries to _emulate_ an end user experience 
-similar to using [OAuth 2.0 Device Authorization Grant](https://oauth.net/2/device-flow/), 
-[RFC8628](tools.ietf.org/html/rfc8628).
+This proof-of-concept application lets a registered user authenticate with Webex by scanning a Quick Response (QR) Code on their personal device, such as smartphone. In doing so, it essentially emulates an end user experience similar to using [OAuth 2.0 Device Authorization Grant](https://oauth.net/2/device-flow/), [RFC8628](https://tools.ietf.org/html/rfc8628). For example:
+> Your organization deploys Smart TVs in conference rooms that run a Webex integration. Using this PoC, users can easily authenticate with Webex by scanning a QR Code displayed on the TV screen with their smartphone and and following the login prompt there. This eliminates the need for cumbersome text input on the TV, providing a smooth and efficient authentication process.
 
-The target audience for this PoC are [Webex Integration](https://developer.webex.com/docs/integrations) 
-Developers who want a seamless way to sign-in their users with Webex on devices with limited web or 
-input capability — Smart TVs, In-Car Displays or Apps running on RoomOS devices (in kiosk mode).
+The target audience for this PoC are [Webex Integration](https://developer.webex.com/docs/integrations) Developers who want a seamless way to sign-in their users with Webex on devices with limited web or input capability — Smart TVs, in-car displays, or apps running on RoomOS devices (in kiosk mode).
+
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/6129517/152443487-9bce59e6-1704-4d3d-82f5-15c65592afc4.gif"
