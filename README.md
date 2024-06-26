@@ -1,3 +1,6 @@
+> [!NOTE]  
+> As of September 2022, Webex added official support for the OAuth Device Code grant flow. To know more, please see the documentaion on [Login with Webex - Getting an Access Token with Device Grant Flow](https://developer.webex.com/docs/login-with-webex#getting-an-access-token-with-device-grant-flow) and the blog post [Login with Webex on Developer Applications and 3rd Party Platforms](https://developer.webex.com/blog/login-with-webex-on-developer-applications-and-3rd-party-platforms).
+
 QR Code based Authentication
 ============================
 **Seamlessly authenticate with Webex on systems with limited web or input capability.**
